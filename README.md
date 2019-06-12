@@ -7,6 +7,6 @@ A python library for instagram.
 
 ## Donate
 
-Want to keep this project going? Please donate generously [https://www.buymeacoffee.com/page-settings]
+Want to keep this project going? Please donate generously [https://www.buymeacoffee.com/adrianodemarino]
 
-[![Build](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/page-settings)
+[![Build](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/adrianodemarino)
