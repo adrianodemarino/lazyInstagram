@@ -92,7 +92,7 @@ def add_friends(from_who,howmany):
             for new_friend in mydata:
                 try:
                     api.friendships_create(new_friend)
-                    time.sleep(20) #20 seconds is a good compromise (slow down! too fast is not a good idea)
+                    time.sleep(30) #20-30 seconds is a good compromise (slow down! too fast is not a good idea)
                 except Exception as e:
                     print('Request limit, take a break; Instagram is not happy! try after 2-3 hour')
                     return None
