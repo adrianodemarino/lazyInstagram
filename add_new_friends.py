@@ -76,7 +76,7 @@ def current_user_id():
 def user_ids_of_a_search(query):
     return pd.DataFrame(api.search_users(query)['users']).pk.unique()
 
-def add_friends(from_who,howmany):
+def add_friends(from_who,howmany,pause):
     merge = all_follower_following()
     mypk = merge.pk.unique()
     counter = 0
@@ -92,7 +92,7 @@ def add_friends(from_who,howmany):
             for new_friend in mydata:
                 try:
                     api.friendships_create(new_friend)
-                    time.sleep(30) #20-30 seconds is a good compromise (slow down! too fast is not a good idea)
+                    time.sleep(pause) #20-30 seconds is a good compromise (slow down! too fast is not a good idea)
                 except Exception as e:
                     print('Request limit, take a break; Instagram is not happy! try after 2-3 hour')
                     return None
@@ -120,6 +120,7 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--password', dest='password', type=str, required=True)
     parser.add_argument('-s', '--search', dest='search', type=str, required=True)
     parser.add_argument('-n', '--number', dest='number', type=int, required=True)
+    parser.add_argument('-b', '--break', dest='pause', type=int, required=True)
     parser.add_argument('-debug', '--debug', action='store_true')
 
     args = parser.parse_args()
@@ -130,8 +131,8 @@ if __name__ == '__main__':
     api = Client(args.username, args.password)
     query = args.search
     number = args.number
+    pause = int(args.pause)
     
-    api = Client(user_name, password)
     rank_token = Client.generate_uuid()
     # ---------- Pagination with max_id ----------
     user_ids = user_ids_of_a_search(query)
@@ -139,6 +140,6 @@ if __name__ == '__main__':
     myid = current_user_id()
 
     #add Friends on Instagram
-    add_friends(query,number)
+    add_friends(query,number,pause)
 
 
